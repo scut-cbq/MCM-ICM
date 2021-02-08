@@ -1,0 +1,35 @@
+format long
+e = exp(1);
+y = [25.25277553 26.91244167 28.57210782];
+for i = 1:length(y)
+syms x
+eqn = y(i) == 0.1021*x-182;
+vpasolve(eqn, x)
+end
+
+format long
+e = exp(1);
+y = [36.56930545 39.32907772 42.08884999];
+for i = 1:length(y)
+syms x
+eqn = y(i) == 0.03888*x-44.52;
+vpasolve(eqn, x)
+end
+
+format long
+e = exp(1);
+y = [20.74525 16.79051 12.83576];
+for i = 1:length(y)
+syms x
+eqn = y(i) == -1.022*x+2084;
+vpasolve(eqn, x)
+end
+
+format long
+e = exp(1);
+y = [7.686235 5.67247 3.658706];
+for i = 1:length(y)
+syms x
+eqn = y(i) == -1.823*x+3684;
+vpasolve(eqn, x)
+end

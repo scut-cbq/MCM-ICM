@@ -1,0 +1,106 @@
+% fig. 1
+format long
+p = 0.356;
+a = 2 / (1 + exp(0.356 - p))
+x = xlsread('data profitability.xlsx', 'Sheet1', 'L24:AF24');
+data = xlsread('data profitability.xlsx', 'Sheet1', 'L25:AF25');
+y = a * data;
+xx = x(1) :0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+subplot(1, 2, 1);
+plot(xx, yy, 'LineWidth', 2);
+hold on;
+
+p = 0.297;
+a = 2 / (1 + exp(0.356 - p))
+x = xlsread('data profitability.xlsx', 'Sheet1', 'L24:AF24');
+data = xlsread('data profitability.xlsx', 'Sheet1', 'L25:AF25');
+y = a * data;
+xx = x(1) :0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+plot(xx, yy, 'LineWidth', 2);
+hold on;
+
+p = 0.765;
+b = 2 / (1 + exp(0.765 - p))
+x = xlsread('data profitability.xlsx', 'Sheet1', 'L24:AF24');
+data = xlsread('data profitability.xlsx', 'Sheet1', 'L27:AF27');
+y = b * data;
+xx = x(1) :0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+% subplot(2, 1, 2);
+plot(xx, yy, 'LineWidth', 2);
+hold on;
+
+p = 0.715;
+b = 2 / (1 + exp(0.765 - p))
+x = xlsread('data profitability.xlsx', 'Sheet1', 'L24:AF24');
+data = xlsread('data profitability.xlsx', 'Sheet1', 'L27:AF27');
+y = b * data;
+xx = x(1) :0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+plot(xx, yy, 'LineWidth', 2);
+hold on;
+
+legend('India, Current', 'India, New', 'United States, Current', 'United States, New');
+xlabel('Year')
+ylabel('Employment in agriculture (% of total employment)')
+set(gca, 'fontsize', 16);
+
+% fig. 2
+format long
+ef = 0.212;
+c = 2 / (1 + exp(0.212 - ef))
+x = xlsread('data efficiency.xlsx', 'Sheet1', 'AF31:BF31');
+data = xlsread('data efficiency.xlsx', 'Sheet1', 'AF32:BF32');
+y = c * data;
+xx = x(1) :0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+subplot(1, 2, 2);
+plot(xx, yy, 'LineWidth', 2);
+hold on;
+
+ef = 0.184;
+c = 2 / (1 + exp(0.212 - ef))
+x = xlsread('data efficiency.xlsx', 'Sheet1', 'AF31:BF31');
+data = xlsread('data efficiency.xlsx', 'Sheet1', 'AF32:BF32');
+y = c * data;
+xx = x(1) :0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+plot(xx, yy, 'LineWidth', 2);
+hold on;
+
+ef = 0.666;
+d = 2 / (1 + exp(0.666 - ef))
+x = xlsread('data efficiency.xlsx', 'Sheet1', 'AF31:BF31');
+data = xlsread('data efficiency.xlsx', 'Sheet1', 'AF34:BF34');
+y = d * data;
+xx = x(1) :0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+% subplot(2, 1, 2);
+plot(xx, yy, 'LineWidth', 2);
+hold on;
+
+ef = 0.615;
+d = 2 / (1 + exp(0.666 - ef))
+x = xlsread('data efficiency.xlsx', 'Sheet1', 'AF31:BF31');
+data = xlsread('data efficiency.xlsx', 'Sheet1', 'AF34:BF34');
+y = d * data;
+xx = x(1) :0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+% subplot(2, 1, 2);
+plot(xx, yy, 'LineWidth', 2);
+hold on;
+
+legend('India, Current', 'India, New', 'United States, Current', 'United States, New');
+xlabel('Year')
+ylabel('Food production index')
+set(gca, 'fontsize', 16);

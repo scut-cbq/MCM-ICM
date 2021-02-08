@@ -1,0 +1,14 @@
+format long
+x=[0.433276 0.720472];
+for i=1:2
+syms miu
+eqn = 2 / (1 + exp(miu - x(i))) == 1;
+miu=vpasolve(eqn,miu)
+end
+
+x=[0.433276 0.498049 0.720472 0.603828];
+for i=1:4
+syms miu
+eqn = 2 * (1 - 1 / (1 + exp(miu - x(i)))) == 1;
+miu=vpasolve(eqn,miu)
+end

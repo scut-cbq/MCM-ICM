@@ -1,0 +1,63 @@
+%get parameter b
+a = [2 3 4 5];
+for i = 1:length(a)
+syms b
+eqn = a(i) / (1 + exp(b - 0.72047)) == 1;
+vpasolve(eqn, b)
+end
+
+% .m file
+function cs = calc(a, b, s)
+cs = a / (1 + exp(b - s));
+end
+
+%draw picture
+x = xlsread('data sustainability.xlsx', 'Sheet1', 'I31:N31');
+y = xlsread('data sustainability.xlsx', 'Sheet1', 'I34:N34');
+y1 = y * calc(2, 0.72047, 0.72047);
+y2 = y * calc(2, 0.72047, 0.756495);
+y3 = y * calc(3, 1.4136171805599453094172321214582, 0.756495);
+y4 = y * calc(4, 1.8190822886681096913952452369225, 0.756495);
+y5 = y * calc(5, 2.1067643611198906188344642429164, 0.756495);
+xx = x(1) :0.01 : x(end);
+pp1 = csape(x, y1);
+pp2 = csape(x, y2);
+pp3 = csape(x, y3);
+pp4 = csape(x, y4);
+pp5 = csape(x, y5);
+yy1 = fnval(pp1, xx);
+yy2 = fnval(pp2, xx);
+yy3 = fnval(pp3, xx);
+yy4 = fnval(pp4, xx);
+yy5 = fnval(pp5, xx);
+subplot(1, 2, 1);
+plot(xx, yy1, xx, yy2, xx, yy3, xx, yy4, xx, yy5, 'LineWidth', 1);
+legend('current', 'λ = 2', 'λ = 3', 'λ = 4', 'λ = 5');
+xlabel('Year')
+ylabel({ 'Renewable internal freshwater','resources per capita (cubic meters)' })
+set(gca, 'fontsize', 16);
+
+x = xlsread('data sustainability.xlsx', 'Sheet1', 'I31:N31');
+y = xlsread('data sustainability.xlsx', 'Sheet1', 'I34:N34');
+y1 = y * calc(2, 0.72047, 0.72047);
+y2 = y * calc(2, 0.72047, 0.792519);
+y3 = y * calc(3, 1.4136171805599453094172321214582, 0.792519);
+y4 = y * calc(4, 1.8190822886681096913952452369225, 0.792519);
+y5 = y * calc(5, 2.1067643611198906188344642429164, 0.792519);
+xx = x(1) :0.01 : x(end);
+pp1 = csape(x, y1);
+pp2 = csape(x, y2);
+pp3 = csape(x, y3);
+pp4 = csape(x, y4);
+pp5 = csape(x, y5);
+yy1 = fnval(pp1, xx);
+yy2 = fnval(pp2, xx);
+yy3 = fnval(pp3, xx);
+yy4 = fnval(pp4, xx);
+yy5 = fnval(pp5, xx);
+subplot(1, 2, 2);
+plot(xx, yy1, xx, yy2, xx, yy3, xx, yy4, xx, yy5, 'LineWidth', 1);
+legend('current', 'λ = 2', 'λ = 3', 'λ = 4', 'λ = 5');
+xlabel('Year')
+ylabel({ 'Renewable internal freshwater','resources per capita (cubic meters)' })
+set(gca, 'fontsize', 16);

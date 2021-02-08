@@ -1,0 +1,60 @@
+%fmincon
+% B = 5.581771615013221; s = 0.4549398; eq = 0.52295145;
+
+%get B, s, eq
+format long
+s0 = 0.433276;
+eq0 = 0.498049;
+p0 = 0.211853;
+ef0 = 0.355982;
+e = exp(1);
+B = e ^ s0 + 0.5 * e ^ p0 + 0.5 * e ^ ef0 + e ^ (2 * eq0)
+s = 1.05 * s0
+eq = 1.05 * eq0
+
+% .m file start
+function f = fun1(x)
+f = -0.4 * 0.4549398 - 0.1 * x(1) - 0.2 * x(2) - 0.3 * 0.52295145;
+% .m file end
+
+% .m file start
+function[g, h] = fun2(x)
+g = exp(0.4549398) + 0.5 * exp(x(1)) + 0.5 * exp(x(2)) + exp(2 * 0.52295145) - 5.581771615013221;
+h = [];
+% .m file end
+
+x0 = [0.211853; 0.355982];
+lb = zeros(2, 1); ub = ones(2, 1);
+[x, y] = fmincon('fun1', x0, [], [], [], [], lb, ub, 'fun2');
+x, -y
+
+
+%fmincon
+% B = 7.449006933705379; s = 0.7564956; eq = 0.6340194;
+
+%get B, s, eq
+format long
+s0 = 0.720472;
+eq0 = 0.603828;
+p0 = 0.76481;
+ef0 = 0.666472;
+e = exp(1);
+B = e ^ s0 + 0.5 * e ^ p0 + 0.5 * e ^ ef0 + e ^ (2 * eq0)
+s = 1.05 * s0
+eq = 1.05 * eq0
+
+% .m file start
+function f = fun3(x)
+f = -0.4 * 0.7564956 - 0.1 * x(1) - 0.2 * x(2) - 0.3 * 0.6340194
+% .m file end
+
+% .m file start
+function[g, h] = fun4(x)
+g = exp(0.7564956) + 0.5 * exp(x(1)) + 0.5 * exp(x(2)) + exp(2 * 0.6340194) - 7.449006933705379;
+h = [];
+% .m file end
+
+x0 = [0.76481; 0.666472];
+lb = zeros(2, 1); ub = ones(2, 1);
+[x, y] = fmincon('fun3', x0, [], [], [], [], lb, ub, 'fun4');
+x, -y

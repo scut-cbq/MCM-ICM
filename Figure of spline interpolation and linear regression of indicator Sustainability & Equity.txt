@@ -1,0 +1,121 @@
+x = xlsread('statistical regression.xlsx', 'Sheet1', 'C2:AC2');
+y = xlsread('statistical regression.xlsx', 'Sheet1', 'C3:AC3');
+xx = x(1) : 0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+subplot(1, 2, 1);
+plot(xx, yy, 'LineWidth', 2);
+hold on
+
+x = xlsread('statistical regression.xlsx', 'Sheet1', 'C5:AC5');
+y = xlsread('statistical regression.xlsx', 'Sheet1', 'C6:AC6');
+xx = x(1) : 0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+subplot(1, 2, 1);
+plot(xx, yy, 'LineWidth', 2);
+xlabel('Year')
+ylabel('Forest area (% of land area)')
+set(gca, 'fontsize', 16);
+legend('India', 'United States')
+
+x = xlsread('statistical regression.xlsx', 'Sheet1', 'C10:N10');
+y = xlsread('statistical regression.xlsx', 'Sheet1', 'C11:N11');
+xx = x(1) : 0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+subplot(1, 2, 2);
+plot(xx, yy, 'LineWidth', 2);
+hold on
+
+x = xlsread('statistical regression.xlsx', 'Sheet1', 'C13:N13');
+y = xlsread('statistical regression.xlsx', 'Sheet1', 'C14:N14');
+xx = x(1) : 0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+subplot(1, 2, 2);
+plot(xx, yy, 'LineWidth', 2);
+xlabel('Year')
+ylabel('Gini index')
+set(gca, 'fontsize', 16);
+legend('India', 'United States')
+
+x = xlsread('statistical regression.xlsx', 'Sheet1', 'C19:K19');
+y = xlsread('statistical regression.xlsx', 'Sheet1', 'C20:K20');
+xx = x(1) : 0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+plot(xx, yy, x, y, 'o', 'MarkerFaceColor', [0.3010 0.7450 0.9330], 'MarkerEdgeColor', [0.3010 0.7450 0.9330]);
+xlabel('Year')
+ylabel('Poverty headcount ratio at national poverty lines (% of population)')
+set(gca, 'fontsize', 16);
+grid on
+
+x = xlsread('statistical regression.xlsx', 'Sheet1', 'C22:P22');
+y = xlsread('statistical regression.xlsx', 'Sheet1', 'C23:P23');
+xx = x(1) : 0.01 : x(end);
+pp = csape(x, y);
+yy = fnval(pp, xx);
+plot(xx, yy, x, y, 'o', 'MarkerFaceColor', [0.3010 0.7450 0.9330], 'MarkerEdgeColor', [0.3010 0.7450 0.9330]);
+xlabel('Year')
+ylabel('Poverty headcount ratio at national poverty lines (% of population)')
+set(gca, 'fontsize', 16);
+grid on
+
+
+%using "basic fitting" for polyfit
+x = xlsread('statistical regression.xlsx', 'Sheet1', 'C2:AC2');
+y = xlsread('statistical regression.xlsx', 'Sheet1', 'C3:AC3');
+plot(x, y, 'o');
+xlabel('Year')
+ylabel('Forest area (% of land area)')
+set(gca, 'fontsize', 16);
+grid on
+corrcoef(x,y)
+
+
+x = xlsread('statistical regression.xlsx', 'Sheet1', 'C5:AC5');
+y = xlsread('statistical regression.xlsx', 'Sheet1', 'C6:AC6');
+plot(x, y, 'o');
+xlabel('Year')
+ylabel('Forest area (% of land area)')
+set(gca, 'fontsize', 16);
+grid on
+corrcoef(x,y)
+
+x = xlsread('statistical regression.xlsx', 'Sheet1', 'C10:H10');
+y = xlsread('statistical regression.xlsx', 'Sheet1', 'C11:H11');
+plot(x, y, 'o');
+xlabel('Year')
+ylabel('Gini index')
+set(gca, 'fontsize', 16);
+set(gca, 'XTick', x(1) :x(end));
+grid on
+corrcoef(x,y)
+
+x = xlsread('statistical regression.xlsx', 'Sheet1', 'C13:N13');
+y = xlsread('statistical regression.xlsx', 'Sheet1', 'C14:N14');
+plot(x, y, 'o');
+xlabel('Year')
+ylabel('Gini index')
+set(gca, 'fontsize', 16);
+grid on
+corrcoef(x,y)
+
+x = xlsread('statistical regression.xlsx', 'Sheet1', 'C19:K19');
+y = xlsread('statistical regression.xlsx', 'Sheet1', 'C20:K20');
+plot(x, y, 'o');
+xlabel('Year')
+ylabel('Poverty headcount ratio at national poverty lines (% of population)')
+set(gca, 'fontsize', 16);
+grid on
+corrcoef(x,y)
+
+x = xlsread('statistical regression.xlsx', 'Sheet1', 'C22:P22');
+y = xlsread('statistical regression.xlsx', 'Sheet1', 'C23:P23');
+plot(x, y, 'o');
+xlabel('Year')
+ylabel('Poverty headcount ratio at national poverty lines (% of population)')
+set(gca, 'fontsize', 16);
+grid on
+corrcoef(x,y)
